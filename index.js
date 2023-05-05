@@ -6,6 +6,12 @@ require('dotenv').config()
 const multer = require('multer')
 const jwt=require("jsonwebtoken")
 const app = express()
+app.get("/",(req,res)=>{
+    res.send("hello")
+})
+app.get("/hello",(req,res)=>{
+    res.send("hello")
+})
 const cors=require("cors")
 mongoose.set('strictQuery', false);
 app.use(cors())
@@ -28,12 +34,7 @@ mongoose.connect(connection_url, {
 
 
 app.use('/', route);
-app.get("/",(req,res)=>{
-    res.send("hello")
-})
-app.get("/hello",(req,res)=>{
-    res.send("hello")
-})
+
 
 const server = app.listen(PORT, ()=>{
     console.log(`server is running on port ${PORT}`)
